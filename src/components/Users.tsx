@@ -1,14 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Users = () => {
-    const [users, setUsers] = useState<any[]>([])
+    const [users, setUsers] = useState<any[]>([]);
+    const [posts, setPosts] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(true)
 
-    const getUsers = () => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(res => res.json())
-            .then(data => setUsers(data))
-            .finally(() => setLoading(false))
+    const getUsers = async () => {
+        //     fetch('https://jsonplaceholder.typicode.com/userss')
+        //         .then(res => res.json())
+        //         .then(data => setUsers(data))
+        //         .finally(() => setLoading(false))
+
+        // **********************************
+        // axios('https://jsonplaceholder.typicode.com/userss')
+        //     .then(res => setUsers(res.data))
+        //     .catch(error => console.log(error))
+        //     .finally(() => setLoading(false))
+
+        // // ********************************
+        try {
+            const { data: users } = await axios.get('https://jsonplaceholder.typicode.com/users');
+            const { data: posts } = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${users[0].id}`);
+
+            setLoading(false);
+
+            setUsers(users);
+            setPosts(posts);
+
+            // console.log(posts)
+        } catch (error) {
+            console.log(error)
+        }
+
+
+
     }
 
 
@@ -34,6 +60,18 @@ const Users = () => {
                     ))
                 }
             </ol>
+
+
+            <h1>Posts</h1>
+
+            <ol>
+                {
+                    posts.map((post) => (
+                        <li key={post.id}>{post.title}</li>
+                    ))
+                }
+            </ol>
+
 
 
 
