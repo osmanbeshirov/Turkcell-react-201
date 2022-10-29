@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 
-const UserList = () => {
+interface IProps {
+    sendUser: (user: any) => void
+}
+
+const UserList: React.FC<IProps> = ({ sendUser }) => {
     const [users, setUsers] = useState<any[]>([]);
 
     const [loading, setLoading] = useState<boolean>(true)
@@ -17,7 +21,6 @@ const UserList = () => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const UserList = () => {
             <ol className='user-list'>
                 {
                     users.map(user => (
-                        <li  key={user.id}>{user.name}</li>
+                        <li onClick={() => sendUser(user.id)} key={user.id}>{user.name}</li>
                     ))
                 }
             </ol>

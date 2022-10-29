@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Users from './components/Users';
 
 import '../src/App.css'
 import UserList from './components/UserList';
+import UserDetails from './components/UserDetails';
 
 function App() {
+
+  const [activeId, setActiveId] = useState(null)
+
+
+
+
   return (
     <div className="App">
       <div>
-        <UserList />
+        <UserList sendUser={setActiveId} />
       </div>
-      <div>Sag</div>
+      <div>
+        {
+          activeId && <UserDetails selectedId={activeId} />
+        }
+
+      </div>
     </div>
   );
 }
