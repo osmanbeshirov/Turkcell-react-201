@@ -25,3 +25,11 @@ ol, li{
 .user-list li:hover{
     color: blue;
 }
+
+.menu{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    column-gap: 15px;
+}
+
