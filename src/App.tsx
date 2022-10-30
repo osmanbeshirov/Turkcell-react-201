@@ -20,8 +20,6 @@ function App() {
   // const [activeId, setActiveId] = useState(null)
 
 
-
-
   return (
     <div className="App">
 
@@ -30,7 +28,9 @@ function App() {
         <Menu />
         <Routes>
           <Route index element={<Home />} />
+
           <Route path='users' element={<Users />} />
+
           <Route path='contact' element={<Contact />} />
         </Routes>
       </BrowserRouter>
@@ -45,8 +45,6 @@ function App() {
         }
 
       </div> */}
-
-
     </div>
   );
 }
