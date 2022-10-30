@@ -12,7 +12,7 @@ import Menu from './components/Menu';
 
 import '../src/App.css'
 import UserList from './components/UserList';
-import UserDetails from './components/UserDetails';
+import UserDetails from './Pages/UserDetails'
 import Contact from './Pages/Contact';
 
 function App() {
@@ -30,6 +30,8 @@ function App() {
           <Route index element={<Home />} />
 
           <Route path='users' element={<Users />} />
+
+          <Route path='users/:id' element={<UserDetails />} />
 
           <Route path='contact' element={<Contact />} />
         </Routes>
