@@ -5,18 +5,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // import Users from './components/Users';
 
-import Users from './Pages/Users'
+import Users from './Pages/Dashboard/Users'
 
-import Home from './Pages/Home';
+import Home from './Pages/Dashboard/Home';
 import Menu from './components/Menu';
 
 import '../src/App.css'
 import UserList from './components/UserList';
-import UserDetails from './Pages/UserDetails'
-import Contact from './Pages/Contact';
-import Login from './Pages/Login';
-import DashboardLayout from './Layouts/DashboardLayout';
-import AuthLayout from './Layouts/AuthLayout';
+import UserDetails from './Pages/Dashboard/UserDetails'
+import Contact from './Pages/Dashboard/Contact';
+import Login from './Pages/Auth/Login';
+import DashboardLayout from './Layouts/Dashboard/DashboardLayout';
+import AuthLayout from './Layouts/Auth/AuthLayout';
+import Register from './Pages/Auth/Register';
 
 function App() {
 
@@ -42,11 +43,11 @@ function App() {
 
           <Route path='auth' element={<AuthLayout />}>
             <Route index element={<Login />} />
+            <Route path='register' element={<Register />} />
           </Route>
 
         </Routes>
       </BrowserRouter>
-
 
       {/* <div>
         <UserList sendUser={setActiveId} />

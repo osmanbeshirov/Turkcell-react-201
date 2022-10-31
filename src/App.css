@@ -1,35 +1,29 @@
-.App{
-    display: flex;
-    width: 700px;
-    margin: 0 auto;
+.App {
+    /* display: flex; */
+    width: 100%;
+    margin: 10 auto;
 }
 
-.App > div{
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 10px;
-    padding-left: 20px;
-}
 
-ol, li{
+ol,
+li {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
 
-.user-list li{
+.user-list li {
     cursor: pointer;
 }
 
-.user-list li:hover{
+.user-list li:hover {
     color: blue;
 }
 
-.menu{
+.menu {
     display: flex;
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
     column-gap: 15px;
 }
-
