@@ -14,6 +14,9 @@ import '../src/App.css'
 import UserList from './components/UserList';
 import UserDetails from './Pages/UserDetails'
 import Contact from './Pages/Contact';
+import Login from './Pages/Login';
+import DashboardLayout from './Layouts/DashboardLayout';
+import AuthLayout from './Layouts/AuthLayout';
 
 function App() {
 
@@ -25,15 +28,22 @@ function App() {
 
       <BrowserRouter>
 
-        <Menu />
         <Routes>
-          <Route index element={<Home />} />
 
-          <Route path='users' element={<Users />} />
+          <Route path='/' element={<DashboardLayout />}>
+            <Route index element={<Home />} />
 
-          <Route path='users/:id' element={<UserDetails />} />
+            <Route path='users' element={<Users />} />
 
-          <Route path='contact' element={<Contact />} />
+            <Route path='users/:id' element={<UserDetails />} />
+
+            <Route path='contact' element={<Contact />} />
+          </Route>
+
+          <Route path='auth' element={<AuthLayout />}>
+            <Route index element={<Login />} />
+          </Route>
+
         </Routes>
       </BrowserRouter>
 
