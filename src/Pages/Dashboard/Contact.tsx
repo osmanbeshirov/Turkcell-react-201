@@ -22,9 +22,10 @@ const Contact = () => {
             message: 'Salam dostlar...'
         },
 
-        onSubmit: async (values) => {
-            await new Promise((r) => setTimeout(r, 3000))
+        onSubmit: async (values,bag) => {
+            await new Promise((r) => setTimeout(r, 1000))
             console.log(values)
+            bag.resetForm()
         }
     });
 
