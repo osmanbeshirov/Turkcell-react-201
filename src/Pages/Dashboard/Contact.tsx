@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Field, Form, FormikHelpers, useFormik } from 'formik';
+import { config } from 'process';
 
 
 interface Values {
@@ -9,25 +10,51 @@ interface Values {
 }
 
 
-
 const Contact = () => {
 
-    // const { handleSubmit, handleChange, values, errors } = useFormik({
-    //     initialValues: {
-    //         firstName: '',
-    //         lastName: '',
-    //         email: '',
-    //     },
-    //     onSubmit: values => {
-    //         console.log(values);
-    //     },
-    // });
+    // ******************* 1. way
+    const { handleSubmit, handleChange } = useFormik<Values>({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            email: ''
+        },
+
+        onSubmit: values => {
+            console.log(values)
+        }
+
+    });
 
     return (
         <div>
             <h2>Contact</h2>
+            <form onSubmit={handleSubmit} >
+                <input
+                    type="text"
+                    name="firstName"
+                    placeholder="Ad"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Soyad"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                />
 
-            <Formik
+                <button type="submit">Kayıt Ol</button>
+            </form>
+
+
+            {/* ******************************* 2. way */}
+            {/* <Formik
                 initialValues={{
                     firstName: '',
                     lastName: '',
@@ -67,10 +94,10 @@ const Contact = () => {
                     )
                 }
 
-            </Formik>
+            </Formik> */}
 
 
-
+            {/* ****************** 3. way */}
             {/* <Formik
                 initialValues={{
                     firstName: '',
