@@ -1,6 +1,9 @@
 import React from 'react'
 import { Formik, Field, Form, FormikHelpers, useFormik } from 'formik';
 import { config } from 'process';
+import * as Yup from 'yup';
+
+import { SchemaOf } from 'yup'
 
 
 interface Values {
@@ -10,22 +13,37 @@ interface Values {
     message: string
 }
 
+const validationSchema: SchemaOf<Values> = Yup.object().shape({
+    firstName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    lastName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    message: Yup.string().required('sad')
+})
+
 
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, values, isSubmitting } = useFormik<Values>({
+    const { handleSubmit, handleChange, values, isSubmitting, errors } = useFormik<Values>({
         initialValues: {
-            firstName: 'Osman',
-            lastName: 'Bashirov',
-            email: 'osman.beshirov@gmail.com',
-            message: 'Salam dostlar...'
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: ''
         },
+        validationSchema,
 
-        onSubmit: async (values,bag) => {
+        onSubmit: async (values, bag) => {
             await new Promise((r) => setTimeout(r, 1000))
-            console.log(values)
-            bag.resetForm()
+            console.log(values);
+            console.log(bag);
+            bag.resetForm();
         }
     });
 
