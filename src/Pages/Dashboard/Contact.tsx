@@ -14,12 +14,12 @@ interface Values {
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange } = useFormik<Values>({
+    const { handleSubmit, handleChange, values } = useFormik<Values>({
         initialValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            message: ''
+            firstName: 'Osman',
+            lastName: 'Bashirov',
+            email: 'osman.beshirov@gmail.com',
+            message: 'Salam dostlar...'
         },
 
         onSubmit: values => {
@@ -39,6 +39,7 @@ const Contact = () => {
                         name="firstName"
                         placeholder="Ad"
                         onChange={handleChange}
+                        value={values.firstName}
                     />
                 </div>
 
@@ -49,6 +50,7 @@ const Contact = () => {
                         name="lastName"
                         placeholder="Soyad"
                         onChange={handleChange}
+                        value={values.lastName}
                     />
                 </div>
 
@@ -60,6 +62,7 @@ const Contact = () => {
                         name="email"
                         placeholder="Email"
                         onChange={handleChange}
+                        value={values.email}
                     />
                 </div>
 
@@ -69,6 +72,7 @@ const Contact = () => {
                         name="message"
                         placeholder="Message"
                         onChange={handleChange}
+                        value={values.message}
                     />
                 </div>
 
