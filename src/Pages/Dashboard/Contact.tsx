@@ -14,7 +14,7 @@ interface Values {
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, values } = useFormik<Values>({
+    const { handleSubmit, handleChange, values, isSubmitting } = useFormik<Values>({
         initialValues: {
             firstName: 'Osman',
             lastName: 'Bashirov',
@@ -22,10 +22,10 @@ const Contact = () => {
             message: 'Salam dostlar...'
         },
 
-        onSubmit: values => {
+        onSubmit: async (values) => {
+            await new Promise((r) => setTimeout(r, 3000))
             console.log(values)
         }
-
     });
 
     return (
@@ -40,6 +40,7 @@ const Contact = () => {
                         placeholder="Ad"
                         onChange={handleChange}
                         value={values.firstName}
+                        disabled={isSubmitting}
                     />
                 </div>
 
@@ -51,6 +52,7 @@ const Contact = () => {
                         placeholder="Soyad"
                         onChange={handleChange}
                         value={values.lastName}
+                        disabled={isSubmitting}
                     />
                 </div>
 
@@ -63,6 +65,7 @@ const Contact = () => {
                         placeholder="Email"
                         onChange={handleChange}
                         value={values.email}
+                        disabled={isSubmitting}
                     />
                 </div>
 
@@ -73,11 +76,12 @@ const Contact = () => {
                         placeholder="Message"
                         onChange={handleChange}
                         value={values.message}
+                        disabled={isSubmitting}
                     />
                 </div>
 
 
-                <button type="submit">Kayıt Ol</button>
+                <button type="submit" disabled={isSubmitting}>Kayıt Ol</button>
             </form>
 
 
