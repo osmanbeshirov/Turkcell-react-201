@@ -27,3 +27,26 @@ li {
     padding: 10px 0;
     column-gap: 15px;
 }
+
+.form>div {
+    padding-bottom: 10px;
+    margin-left: 20px;
+
+}
+
+.form>div>input,
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form>div>label {
+    display: block;
+}
+
+.form button{
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}

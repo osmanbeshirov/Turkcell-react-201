@@ -7,6 +7,7 @@ interface Values {
     firstName: string;
     lastName: string;
     email: string;
+    message: string
 }
 
 
@@ -17,7 +18,8 @@ const Contact = () => {
         initialValues: {
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
+            message: ''
         },
 
         onSubmit: values => {
@@ -29,25 +31,47 @@ const Contact = () => {
     return (
         <div>
             <h2>Contact</h2>
-            <form onSubmit={handleSubmit} >
-                <input
-                    type="text"
-                    name="firstName"
-                    placeholder="Ad"
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Soyad"
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                />
+            <form onSubmit={handleSubmit} className='form' >
+                <div>
+                    <label htmlFor='firstName'>First Name</label>
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder="Ad"
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Soyad"
+                        onChange={handleChange}
+                    />
+                </div>
+
+
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                        name="message"
+                        placeholder="Message"
+                        onChange={handleChange}
+                    />
+                </div>
+
 
                 <button type="submit">Kayıt Ol</button>
             </form>
