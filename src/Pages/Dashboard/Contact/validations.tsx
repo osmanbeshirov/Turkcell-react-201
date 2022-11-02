@@ -19,7 +19,7 @@ const validationSchema: SchemaOf<Values> = Yup.object().shape({
         .max(50, 'Too Long!')
         .required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
-    message: Yup.string().min(5).required('sad')
+    message: Yup.string().min(5).required('Required')
 })
 
 export default validationSchema;

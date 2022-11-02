@@ -3,11 +3,13 @@ import { Formik, Field, Form, FormikHelpers, useFormik } from 'formik';
 import validationSchema from './validations'; //only use validationSchema name
 import { Values } from './validations'
 
+import '../Contact/style.css'
+
 
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, values, isSubmitting } = useFormik<Values>({
+    const { handleSubmit, handleChange, values, isSubmitting, errors } = useFormik<Values>({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -29,7 +31,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className='form' >
                 <div>
                     <label htmlFor='firstName'>First Name</label>
-                    
+
                     <input
                         type="text"
                         name="firstName"
@@ -38,6 +40,9 @@ const Contact = () => {
                         value={values.firstName}
                         disabled={isSubmitting}
                     />
+                    {
+                        errors && <div className='error'>{errors.firstName}</div>
+                    }
                 </div>
 
                 <div>
@@ -50,6 +55,9 @@ const Contact = () => {
                         value={values.lastName}
                         disabled={isSubmitting}
                     />
+                    {
+                        errors && <div className='error'>{errors.lastName}</div>
+                    }
                 </div>
 
 
@@ -63,6 +71,9 @@ const Contact = () => {
                         value={values.email}
                         disabled={isSubmitting}
                     />
+                    {
+                        errors && <div className='error'>{errors.email}</div>
+                    }
                 </div>
 
                 <div>
@@ -74,6 +85,9 @@ const Contact = () => {
                         value={values.message}
                         disabled={isSubmitting}
                     />
+                    {
+                        errors && <div className='error'>{errors.message}</div>
+                    }
                 </div>
 
 
