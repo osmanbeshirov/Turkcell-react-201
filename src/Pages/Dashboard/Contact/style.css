@@ -1,8 +1,10 @@
-.error{
-    color: red;
-    
-}
-
-.error::before{
-    transition: 1000ms;
+.error {
+    color: rgb(248, 47, 47);
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    background-color: rgb(228, 235, 37);
+    width: fit-content;
+    padding: 3px;
+    border-radius: 10px;
 }

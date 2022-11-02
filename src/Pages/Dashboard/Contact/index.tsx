@@ -9,21 +9,22 @@ import '../Contact/style.css'
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, handleBlur, values, isSubmitting, errors, touched } = useFormik<Values>({
-        initialValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            message: ''
-        },
-        validationSchema,
+    const { handleSubmit, handleChange, handleBlur,
+        values, isSubmitting, errors, touched } = useFormik<Values>({
+            initialValues: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                message: ''
+            },
+            validationSchema,
 
-        onSubmit: async (values, bag) => {
-            await new Promise((r) => setTimeout(r, 1000))
-            console.log(values);
-            bag.resetForm();
-        }
-    });
+            onSubmit: async (values, bag) => {
+                await new Promise((r) => setTimeout(r, 1000))
+                console.log(values);
+                bag.resetForm();
+            }
+        });
 
     return (
         <div>
