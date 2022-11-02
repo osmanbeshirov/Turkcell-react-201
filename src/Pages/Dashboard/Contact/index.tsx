@@ -21,7 +21,13 @@ const Contact = () => {
 
             onSubmit: async (values, bag) => {
                 await new Promise((r) => setTimeout(r, 1000))
+
+                if (values.email === 'test@mail.com') {
+                    return bag.setErrors({ email: 'This e-mail adress is already used...' })
+                }
+
                 console.log(values);
+
                 bag.resetForm();
             }
         });
@@ -38,7 +44,7 @@ const Contact = () => {
                         name="firstName"
                         placeholder="Ad"
                         onChange={handleChange}
-                        onBlur={handleBlur('firstName')}
+                        onBlur={handleBlur}
                         value={values.firstName}
                         disabled={isSubmitting}
                     />
@@ -54,7 +60,7 @@ const Contact = () => {
                         name="lastName"
                         placeholder="Soyad"
                         onChange={handleChange}
-                        onBlur={handleBlur('lastName')}
+                        onBlur={handleBlur}
                         value={values.lastName}
                         disabled={isSubmitting}
                     />
@@ -71,7 +77,7 @@ const Contact = () => {
                         name="email"
                         placeholder="Email"
                         onChange={handleChange}
-                        onBlur={handleBlur('email')}
+                        onBlur={handleBlur}
                         value={values.email}
                         disabled={isSubmitting}
                     />
@@ -86,7 +92,7 @@ const Contact = () => {
                         name="message"
                         placeholder="Message"
                         onChange={handleChange}
-                        onBlur={handleBlur('message')}
+                        onBlur={handleBlur}
                         value={values.message}
                         disabled={isSubmitting}
                     />
