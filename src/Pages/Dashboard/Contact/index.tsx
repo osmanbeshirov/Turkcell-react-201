@@ -1,36 +1,13 @@
 import React from 'react'
 import { Formik, Field, Form, FormikHelpers, useFormik } from 'formik';
-import { config } from 'process';
-import * as Yup from 'yup';
-
-import { SchemaOf } from 'yup'
-
-
-interface Values {
-    firstName: string;
-    lastName: string;
-    email: string;
-    message: string
-}
-
-const validationSchema: SchemaOf<Values> = Yup.object().shape({
-    firstName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    lastName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    message: Yup.string().required('sad')
-})
+import validationSchema from './validations'; //only use validationSchema name
+import { Values } from './validations'
 
 
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, values, isSubmitting, errors } = useFormik<Values>({
+    const { handleSubmit, handleChange, values, isSubmitting } = useFormik<Values>({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -42,7 +19,6 @@ const Contact = () => {
         onSubmit: async (values, bag) => {
             await new Promise((r) => setTimeout(r, 1000))
             console.log(values);
-            console.log(bag);
             bag.resetForm();
         }
     });
@@ -53,6 +29,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className='form' >
                 <div>
                     <label htmlFor='firstName'>First Name</label>
+                    
                     <input
                         type="text"
                         name="firstName"
