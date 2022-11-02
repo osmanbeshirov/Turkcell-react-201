@@ -9,7 +9,7 @@ import '../Contact/style.css'
 const Contact = () => {
 
     // ******************* 1. way
-    const { handleSubmit, handleChange, values, isSubmitting, errors } = useFormik<Values>({
+    const { handleSubmit, handleChange, handleBlur, values, isSubmitting, errors, touched } = useFormik<Values>({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -37,11 +37,12 @@ const Contact = () => {
                         name="firstName"
                         placeholder="Ad"
                         onChange={handleChange}
+                        onBlur={handleBlur('firstName')}
                         value={values.firstName}
                         disabled={isSubmitting}
                     />
                     {
-                        errors && <div className='error'>{errors.firstName}</div>
+                        touched.firstName && errors.firstName && <div className='error'>{errors.firstName}</div>
                     }
                 </div>
 
@@ -52,11 +53,12 @@ const Contact = () => {
                         name="lastName"
                         placeholder="Soyad"
                         onChange={handleChange}
+                        onBlur={handleBlur('lastName')}
                         value={values.lastName}
                         disabled={isSubmitting}
                     />
                     {
-                        errors && <div className='error'>{errors.lastName}</div>
+                        touched.lastName && errors.lastName && <div className='error'>{errors.lastName}</div>
                     }
                 </div>
 
@@ -68,11 +70,12 @@ const Contact = () => {
                         name="email"
                         placeholder="Email"
                         onChange={handleChange}
+                        onBlur={handleBlur('email')}
                         value={values.email}
                         disabled={isSubmitting}
                     />
                     {
-                        errors && <div className='error'>{errors.email}</div>
+                        touched.email && errors.email && <div className='error'>{errors.email}</div>
                     }
                 </div>
 
@@ -82,12 +85,14 @@ const Contact = () => {
                         name="message"
                         placeholder="Message"
                         onChange={handleChange}
+                        onBlur={handleBlur('message')}
                         value={values.message}
                         disabled={isSubmitting}
                     />
                     {
-                        errors && <div className='error'>{errors.message}</div>
+                        touched.message && errors.message && <div className='error'>{errors.message}</div>
                     }
+
                 </div>
 
 
