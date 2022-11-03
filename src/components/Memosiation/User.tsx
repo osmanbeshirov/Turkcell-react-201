@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 export type UserObj = {
     id: number;
@@ -20,4 +20,4 @@ const User: React.FC<IUser> = (data) => {
     )
 }
 
-export default User
+export default memo(User); 
