@@ -19,6 +19,7 @@ import DashboardLayout from './Layouts/Dashboard/DashboardLayout';
 import AuthLayout from './Layouts/Auth/AuthLayout';
 import Register from './Pages/Auth/Register';
 import Error404 from './Pages/Error404';
+import Counter from './components/Memosiation/Counter';
 
 function App() {
 
@@ -28,7 +29,10 @@ function App() {
   return (
     <div className="App">
 
-      <BrowserRouter>
+      <Counter />
+
+
+      {/* <BrowserRouter>
 
         <Routes>
 
@@ -50,7 +54,12 @@ function App() {
           <Route path='*' element={<Error404 />} />
 
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+
+
+
+
 
       {/* <div>
         <UserList sendUser={setActiveId} />
