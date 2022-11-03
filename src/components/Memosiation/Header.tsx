@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-const Header = () => {
+interface IHeadaerProps {
+    count?: number;
+    increment: () => void;
+}
+
+const Header: React.FC<IHeadaerProps> = ({ count, increment }) => {
+
+    console.log('Header component re-render');
     return (
-        <div>Header</div>
+        <div>
+            <h2>Header</h2>
+
+            {/* Count: {count} */}
+
+            <button onClick={increment}>Incerase number (Header)</button>
+        </div>
     )
 }
 
-export default Header
+export default memo(Header); 
